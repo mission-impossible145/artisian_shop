@@ -1,0 +1,50 @@
+<?php
+// Sample PHP for session or dynamic seller name
+session_start();
+$_SESSION['seller_name'] = 'John Doe'; // Example seller name
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Artisan Shop</h2>
+        </div>
+
+        <div class="content">
+            <h1>Welcome to Your Seller Dashboard</h1>
+            <p>Hello, <?php echo $_SESSION['seller_name']; ?>! Manage your products and orders efficiently.</p>
+
+            <div class="dashboard-actions">
+                <div class="dashboard-card">
+                    <h3>List Your Products</h3>
+                    <p>Add, edit, and manage all your products in one place.</p>
+                    <a href="#" class="btn">Go to Products</a>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Manage Your Orders</h3>
+                    <p>View, process, and track all your orders easily.</p>
+                    <a href="#" class="btn">Go to Orders</a>
+                </div>
+            </div>
+
+            <!-- Add space between logout and top cards -->
+            <div class="spacer"></div>
+
+            <div class="dashboard-card logout-card">
+                <h3>Logout</h3>
+                <p>Securely log out from your account.</p>
+                <a href="logout.php" class="btn logout-btn">Logout</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
