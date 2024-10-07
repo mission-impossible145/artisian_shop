@@ -40,21 +40,22 @@ if (isset($_GET['id'])) {
 </head>
 <body>
     <h1>Edit Product</h1>
+
     <form action="edit_product_process.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
-        
+
         <label for="product_name">Product Name:</label>
-        <input type="text" id="product_name" name="product_name" value="<?php echo htmlspecialchars($product['product_name']); ?>" required>
+        <input type="text" id="product_name" name="product_name" value="<?php echo $product['product_name']; ?>" required>
 
         <label for="price">Price:</label>
-        <input type="number" id="price" name="price" value="<?php echo htmlspecialchars($product['price']); ?>" required step="0.01">
+        <input type="number" id="price" name="price" value="<?php echo $product['price']; ?>" required step="0.01">
 
         <label for="description">Description:</label>
-        <textarea id="description" name="description" required><?php echo htmlspecialchars($product['description']); ?></textarea>
+        <textarea id="description" name="description" required><?php echo $product['description']; ?></textarea>
 
-        <label for="image_url">Image:</label>
+        <label for="image_url">Image (Optional):</label>
         <input type="file" id="image_url" name="image_url">
-        <img src="<?php echo htmlspecialchars($product['image_url']); ?>" width="100" alt="Current Image">
+        <p>Current Image: <img src="<?php echo $product['image_url']; ?>" alt="Product Image" width="100"></p>
 
         <button type="submit">Update Product</button>
     </form>

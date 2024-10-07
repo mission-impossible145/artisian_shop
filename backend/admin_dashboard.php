@@ -154,6 +154,12 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
             </div>
         </div>
 
+        <div class="admin-card">
+             <i class="fas fa-tags"></i>
+             <a href="manage_categories.php">Manage Categories</a> <!-- New card for category management -->
+        </div>
+
+
         <a href="logout.php" class="logout-btn">Logout</a>
     </div>
 

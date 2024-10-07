@@ -1,98 +1,242 @@
-/* home.css */
 * {
-    box-sizing: border-box; /* Ensure padding and borders are included in element's total width and height */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff; /* White background for brightness */
-    color: #3c3838; /* Dark text for readability */
-    line-height: 1.6; /* Improve readability */
+    background-color: #f4f4f4;
 }
 
-header {
-    background-color: #40ad3c; /* Warm Golden Yellow for header */
-    color: white;
-    padding: 40px 0; /* Vertical padding */
-    text-align: center;
+.top-header {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: right;
 }
 
-h1 {
-    font-size: 3.5em; /* Larger font size for emphasis */
-    margin: 0;
-}
-
-nav {
-    background-color: #b95435; /* Soft Coral for navigation */
-    text-align: center;
-    padding: 15px 0; /* Vertical padding */
-}
-
-nav a {
-    color: rgba(255, 255, 255, 0.959);
+.top-header a {
+    margin-left: 10px;
+    color: #333;
     text-decoration: none;
-    margin: 0 20px; /* More spacing between links */
-    font-weight: bold;
-    transition: color 0.3s;
+    font-size: 12px;
 }
 
-nav a:hover {
-    color: #FFF9C4; /* Light cream on hover */
+.main-header {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
 }
 
-.container {
-    max-width: 900px; /* Increased max width for better readability */
-    margin: 40px auto; /* More space above and below */
-    padding: 40px;
-    background-color: #c1c879; /* Very light green background for content */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+.logo h1 {
+    color: #e76f51;
+    font-size: 24px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav ul li {
+    margin-right: 20px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.cart-search {
+    display: flex;
+    align-items: center;
+}
+
+.cart-search input {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.hero {
+    position: relative; /* Ensure the hero section positions correctly */
+    overflow: hidden; /* Hide any overflow */
+}
+
+.hero-content {
+    position: absolute; /* Position the content over the image */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the content */
+    text-align: center;
+    color: white; /* Change text color if needed */
+}
+
+.hero-image {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0.8; /* Optional: add some opacity */
+}
+
+
+.types-of-handicrafts {
+    padding: 50px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.handicrafts-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.handicraft-item {
     text-align: center;
 }
 
-h2 {
-    font-size: 2.5em; /* Adjusted font size for subheading */
-    color: #4CAF50; /* Bright Green for subheading */
-    margin-bottom: 20px; /* Space below subheading */
+.handicraft-item img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
 }
 
-p {
-    font-size: 1.2em; /* Font size for paragraph */
-    margin: 20px 0; /* Space above and below paragraphs */
+.products {
+    padding: 50px;
+    background-color: #f8f8f8;
 }
 
-.buttons {
-    margin-top: 30px; /* Space above buttons */
-    display: flex; /* Use flexbox for button layout */
-    justify-content: center; /* Center buttons horizontally */
+.product-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
 }
 
-.button {
-    background-color: #ae6f12; /* Warm Golden Yellow for buttons */
-    color: white;
-    border: none;
-    padding: 15px 25px; /* More comfortable padding */
+.product-item {
+    text-align: center;
+    width: 200px;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.product-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.product-item p {
+    color: #e76f51;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.product-item .btn {
+    padding: 10px 20px;
+    background-color: #264653;
+    color: #fff;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em; /* Slightly larger font size for buttons */
-    margin: 0 10px; /* Equal margin on the sides */
-    transition: background-color 0.3s, transform 0.3s;
 }
 
-.button:hover {
-    background-color: #bc7915; /* Darker orange on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-}
-
-footer {
-    background-color: #bb4724; /* Soft Coral for footer */
-    color: white;
+.about-us {
+    padding: 50px;
     text-align: center;
-    padding: 20px; /* More padding for footer */
-    position: relative;
-    bottom: 0;
+    background-color: #fff;
+}
+
+.about-us img {
+    max-width: 300px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.gallery {
+    padding: 50px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.gallery img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.videos {
+    padding: 50px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.video-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.testimonials {
+    padding: 50px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.testimonials-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.testimonial-item {
+    width: 250px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-us {
+    padding: 50px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.contact-form {
+    margin-top: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
     width: 100%;
-    margin-top: 40px; /* Space above footer */
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-form .btn {
+    padding: 10px 20px;
+    background-color: #264653;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.footer {
+    padding: 20px;
+    background-color: #264653;
+    text-align: center;
+    color: #fff;
 }

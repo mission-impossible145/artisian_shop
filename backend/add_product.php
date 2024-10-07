@@ -34,6 +34,8 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'sell
         <label for="image_url">Image:</label>
         <input type="file" id="image_url" name="image_url" required>
 
+    
+
         <button type="submit">Add Product</button>
     </form>
 </body>

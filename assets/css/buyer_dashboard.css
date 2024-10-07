@@ -1,91 +1,242 @@
-/* General Body Styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.top-header {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: right;
+}
+
+.top-header a {
+    margin-left: 10px;
     color: #333;
+    text-decoration: none;
+    font-size: 12px;
 }
 
-/* Container for dashboard */
-.dashboard-container {
-    width: 90%;
-    max-width: 800px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.main-header {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo h1 {
+    color: #e76f51;
+    font-size: 24px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav ul li {
+    margin-right: 20px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.cart-search {
+    display: flex;
+    align-items: center;
+}
+
+.cart-search input {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.hero {
+    position: relative; /* Ensure the hero section positions correctly */
+    overflow: hidden; /* Hide any overflow */
+}
+
+.hero-content {
+    position: absolute; /* Position the content over the image */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the content */
     text-align: center;
+    color: white; /* Change text color if needed */
 }
 
-/* Dashboard Header */
-.dashboard-header h1 {
-    margin-bottom: 10px;
-    color: #4A4A4A;
-    font-size: 2.5rem;
+.hero-image {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0.8; /* Optional: add some opacity */
 }
 
-.dashboard-header p {
-    font-size: 1.2rem;
-    color: #666;
+
+.types-of-handicrafts {
+    padding: 50px;
+    text-align: center;
+    background-color: #fff;
 }
 
-/* Dashboard Action Links */
-.dashboard-actions {
+.handicrafts-grid {
     display: flex;
     justify-content: space-around;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
-.dashboard-link {
-    background: #fff;
-    width: 150px;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+.handicraft-item {
     text-align: center;
-    color: #555;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.dashboard-link .material-icons {
-    font-size: 40px;
-    color: #ff6b6b;
+.handicraft-item img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.products {
+    padding: 50px;
+    background-color: #f8f8f8;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.product-item {
+    text-align: center;
+    width: 200px;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.product-item h3 {
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
-.dashboard-link:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+.product-item p {
+    color: #e76f51;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
-.logout {
-    background-color: #ff6b6b;
+.product-item .btn {
+    padding: 10px 20px;
+    background-color: #264653;
     color: #fff;
-    transition: background-color 0.3s ease;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-.logout:hover {
-    background-color: #e04848;
+.about-us {
+    padding: 50px;
+    text-align: center;
+    background-color: #fff;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .dashboard-actions {
-        flex-direction: column;
-    }
+.about-us img {
+    max-width: 300px;
+    height: auto;
+    margin-top: 20px;
+}
 
-    .dashboard-link {
-        margin-bottom: 20px;
-        width: 100%;
-    }
+.gallery {
+    padding: 50px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.gallery img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.videos {
+    padding: 50px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.video-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.testimonials {
+    padding: 50px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.testimonials-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.testimonial-item {
+    width: 250px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-us {
+    padding: 50px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.contact-form {
+    margin-top: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-form .btn {
+    padding: 10px 20px;
+    background-color: #264653;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.footer {
+    padding: 20px;
+    background-color: #264653;
+    text-align: center;
+    color: #fff;
 }

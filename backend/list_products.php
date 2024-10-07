@@ -4,7 +4,7 @@ include 'db_connection.php';
 
 // Check if the user is logged in and is an admin or seller
 if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'seller'])) {
-    header("Location: login.php");
+    header("Location: buyer_dashboard.php");
     exit();
 }
 

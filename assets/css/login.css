@@ -1,75 +1,75 @@
-/* General body styles */
+/* Reset some default styles */
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Light background for contrast */
 }
 
 /* Container for the login form */
 .container {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    padding: 30px;
-    width: 300px;
-    text-align: center;
-    backdrop-filter: blur(10px); /* Blur effect for the background */
+    max-width: 400px; /* Max width for the container */
+    margin: 100px auto; /* Center the container */
+    padding: 20px; /* Padding inside the container */
+    background-color: white; /* White background for the form */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-/* Heading styles */
+/* Title */
 h2 {
-    margin-bottom: 20px;
-    color: #333;
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Space below the title */
+    color: #333; /* Darker text color */
 }
 
-/* Input group styles */
+/* Input Groups */
 .input-group {
-    margin-bottom: 15px;
-    text-align: left;
+    margin-bottom: 15px; /* Space between input groups */
 }
 
-/* Label styles */
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
+.input-group label {
+    display: block; /* Labels take full width */
+    margin-bottom: 5px; /* Space below labels */
+    color: #666; /* Lighter color for labels */
 }
 
-/* Input field styles */
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    transition: border-color 0.3s;
+.input-group input {
+    width: 100%; /* Full width inputs */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Font size for input text */
 }
 
-/* Focus effect for input fields */
-input[type="email"]:focus,
-input[type="password"]:focus {
-    border-color: #6a11cb;
-    box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
-}
-
-/* Button styles */
+/* Button */
 .btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #2575fc;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    width: 100%; /* Full width button */
+    padding: 10px; /* Padding for the button */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Font size for button text */
+    transition: background-color 0.3s; /* Transition for hover effect */
 }
 
-/* Button hover effect */
 .btn:hover {
-    background-color: #1e5bbf;
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Link to Register */
+p {
+    text-align: center; /* Center the text */
+    margin-top: 15px; /* Space above the paragraph */
+}
+
+p a {
+    color: #4CAF50; /* Green color for the link */
+    text-decoration: none; /* Remove underline */
+}
+
+p a:hover {
+    text-decoration: underline; /* Underline on hover */
 }

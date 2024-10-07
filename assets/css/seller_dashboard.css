@@ -1,180 +1,121 @@
-/* Reset default styles */
+/* General Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box; /* Ensures padding and borders are included in the element's total width and height */
 }
 
 body {
-    background-color: #f9f9f9;
-    display: flex;
-    height: 100vh;
-    color: #2c3e50;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #ece9e6, #ffffff); /* Soft gray to white gradient */
+    margin: 0;
+    padding: 0;
+    color: #333;
+    height: 100vh; /* Make the body take the full height of the viewport */
 }
 
 .container {
     display: flex;
-    width: 100%;
+    min-height: 100vh; /* Full height for the container */
 }
 
+/* Sidebar */
 .sidebar {
-    width: 260px;
-    background: linear-gradient(135deg, #2c3e50, #34495e);
-    color: white;
+    background: linear-gradient(to bottom, #6a11cb, #2575fc); /* Elegant purple to blue gradient */
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 250px;
+    color: white;
+    height: 100vh; /* Full height for sidebar */
+    position: fixed; /* Keep the sidebar fixed on the left */
 }
 
 .sidebar h2 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 50px;
     font-weight: 700;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 125px;
 }
 
 .sidebar ul {
-    list-style: none;
+    list-style-type: none;
+    padding: 0;
 }
 
 .sidebar ul li {
-    margin-bottom: 20px;
+    margin: 15px 0;
 }
 
 .sidebar ul li a {
-    color: white;
-    font-size: 1.2rem;
     text-decoration: none;
-    padding: 15px 10px;
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
     display: block;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 10px;
+    transition: background 0.3s;
 }
 
 .sidebar ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
 }
 
+/* Main Content */
 .content {
     flex: 1;
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    padding: 20px;
+    margin-left: 250px; /* Leave space for the sidebar */
+    background: linear-gradient(to bottom right, #f7f8f9, #e2e2e2); /* Light gray gradient */
 }
 
-h1 {
-    font-size: 2.5rem;
-    color: #34495e;
-    margin-bottom: 20px;
+.content h1 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #333;
 }
 
-p {
-    font-size: 1.1rem;
-    color: #7f8c8d;
-}
-
+/* Dashboard Actions */
 .dashboard-actions {
     display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
+    gap: 30px; /* Increased gap between cards */
+    flex-wrap: wrap;
 }
 
 .dashboard-card {
-    background-color: #ecf0f1;
-    padding: 30px;
-    width: 45%;
+    background: linear-gradient(to bottom right, #b3cde0, #6497b1); /* Elegant blue gradient */
     border-radius: 10px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-}
-
-.dashboard-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    width: calc(33% - 20px); /* Adjusted to fit cards evenly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
 }
 
 .dashboard-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #2980b9;
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
 }
 
 .dashboard-card p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    color: #7f8c8d;
+    font-size: 16px;
+    color: #555;
 }
 
-.dashboard-card a {
-    padding: 12px 25px;
-    background-color: #3498db;
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Button */
+.btn {
+    background: linear-gradient(to right, #f7c1a1, #f4b500); /* Soft coral to gold gradient */
     color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.3s ease;
 }
 
-.dashboard-card a:hover {
-    background-color: #2980b9;
-}
-
-.spacer {
-    margin-bottom: 40px;
-}
-
-.logout-card {
-    background-color: #e74c3c;
-    color: white;
-}
-
-.logout-btn {
-    background-color: #c0392b;
-    font-weight: bold;
-}
-
-.logout-btn:hover {
-    background-color: #a93226;
-}
-
-.logout-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.content, .dashboard-card, .sidebar ul li a {
-    animation: fadeInUp 0.5s ease both;
-}
-
-@media (max-width: 768px) {
-    .dashboard-actions {
-        flex-direction: column;
-    }
-
-    .dashboard-card {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .sidebar {
-        width: 220px;
-    }
+.btn:hover {
+    background: linear-gradient(to right, #f4b500, #f7c1a1); /* Reverse gradient on hover */
 }

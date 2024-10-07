@@ -2,61 +2,45 @@
 session_start();
 include 'db_connection.php';
 
-// Check if the user is logged in and is an admin or seller
-if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'seller'])) {
-    header("Location: login.php");
-    exit();
-}
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $product_id = $_POST['product_id'];
+    $product_name = $_POST['product_name'];
+    $price = $_POST['price'];
+    $description = $_POST['description'];
+    $seller_id = $_SESSION['user_id'];
 
-// Check if product ID is provided
-if (isset($_GET['id'])) {
-    $product_id = intval($_GET['id']);
-    
-    // Fetch the product details from the database
-    $sql = "SELECT * FROM products WHERE product_id = ?";
+    // Update the product details
+    $sql = "UPDATE products SET product_name = ?, price = ?, description = ? WHERE product_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $product_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $product = $result->fetch_assoc();
+    $stmt->bind_param("sdsi", $product_name, $price, $description, $product_id);
 
-    // Check if product exists
-    if (!$product) {
-        echo "Product not found.";
-        exit();
+    // Check if a new image has been uploaded
+    if (!empty($_FILES['image_url']['name'])) {
+        $target_dir = "../uploads/";
+        $target_file = $target_dir . uniqid() . '_' . basename($_FILES["image_url"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        // Validate file and move it to the target directory
+        if (move_uploaded_file($_FILES["image_url"]["tmp_name"], $target_file)) {
+            // Update image URL in the database
+            $sql = "UPDATE products SET image_url = ? WHERE product_id = ?";
+            $stmt_image = $conn->prepare($sql);
+            $stmt_image->bind_param("si", $target_file, $product_id);
+            $stmt_image->execute();
+            $stmt_image->close();
+        }
     }
+
+    if ($stmt->execute()) {
+        header("Location: list_products.php?status=updated");
+        exit();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+    $conn->close();
 } else {
-    echo "No product ID provided.";
-    exit();
+    echo "Invalid request.";
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Product</title>
-</head>
-<body>
-    <h1>Edit Product</h1>
-    <form action="edit_product_process.php" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
-        
-        <label for="product_name">Product Name:</label>
-        <input type="text" id="product_name" name="product_name" value="<?php echo htmlspecialchars($product['product_name']); ?>" required>
-
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" value="<?php echo htmlspecialchars($product['price']); ?>" required step="0.01">
-
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" required><?php echo htmlspecialchars($product['description']); ?></textarea>
-
-        <label for="image_url">Image:</label>
-        <input type="file" id="image_url" name="image_url">
-        <img src="<?php echo htmlspecialchars($product['image_url']); ?>" width="100" alt="Current Image">
-
-        <button type="submit">Update Product</button>
-    </form>
-</body>
-</html>
