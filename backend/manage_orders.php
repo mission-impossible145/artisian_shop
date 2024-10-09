@@ -1,79 +1,68 @@
 <?php
 session_start();
-include 'db_connection.php';
+include 'db_connection.php'; // Make sure this connects to your database
+
+// Check if the user is logged in and is an admin
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'seller') {
+    header("Location: login.php");
+    exit();
+}
 
 // Fetch all orders from the database
-$sql = "SELECT o.order_id, o.user_id, o.product_id, o.quantity, o.status, o.created_at, u.username, p.product_name
+$sql = "SELECT o.order_id, o.total_price, o.order_date, o.order_status,  u.name 
         FROM orders o
-        JOIN users u ON o.user_id = u.user_id
-        JOIN products p ON o.product_id = p.product_id
-        ORDER BY o.created_at DESC";
+        JOIN users u ON o.buyer_id = u.user_id
+        ORDER BY o.order_date DESC";
+
 $result = $conn->query($sql);
 
-?>
+// Check for errors in the SQL execution
+if (!$result) {
+    die("SQL Error: " . $conn->error); // Display error message
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Orders</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
-</head>
-<body>
-    <h1>Manage Orders</h1>
+// Check if there are any orders
+if ($result->num_rows > 0) {
+    echo "<h1>Manage Orders</h1>";
+    echo "<table border='1'>
+            <tr>
+                <th>Order ID</th>
+                <th>Buyer</th>
+                <th>Total Price</th>
+                <th>Order Date</th>
+                <th>Status</th>
+                
+                <th>Action</th>
+            </tr>";
 
-    <?php if ($result->num_rows > 0): ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Username</th>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Status</th>
-                    <th>Created At</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($order = $result->fetch_assoc()): ?>
-                    <tr>
-                        <td><?= $order['order_id']; ?></td>
-                        <td><?= $order['username']; ?></td>
-                        <td><?= $order['product_name']; ?></td>
-                        <td><?= $order['quantity']; ?></td>
-                        <td>
-                            <form action="update_order_status.php" method="POST">
-                                <input type="hidden" name="order_id" value="<?= $order['order_id']; ?>">
-                                <select name="status">
-                                    <option value="Pending" <?= $order['status'] == 'Pending' ? 'selected' : ''; ?>>Pending</option>
-                                    <option value="Shipped" <?= $order['status'] == 'Shipped' ? 'selected' : ''; ?>>Shipped</option>
-                                    <option value="Delivered" <?= $order['status'] == 'Delivered' ? 'selected' : ''; ?>>Delivered</option>
-                                    <option value="Canceled" <?= $order['status'] == 'Canceled' ? 'selected' : ''; ?>>Canceled</option>
-                                </select>
-                                <input type="submit" value="Update">
-                            </form>
-                        </td>
-                        <td><?= $order['created_at']; ?></td>
-                        <td>
-                            <a href="delete_order.php?id=<?= $order['order_id']; ?>" 
-                               onclick="return confirm('Are you sure you want to delete this order?');">
-                               Delete
-                            </a>
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>No orders found.</p>
-    <?php endif; ?>
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>" . $row['order_id'] . "</td>
+                <td>" . htmlspecialchars($row['name']) . "</td>
+                <td>$" . htmlspecialchars($row['total_price']) . "</td>
+                <td>" . date('Y-m-d', strtotime($row['order_date'])) . "</td>
+                <td>" . htmlspecialchars($row['order_status']) . "</td>
+               
+                <td>
+                    <form action='update_order_status.php' method='POST' style='display:inline;'>
+                        <input type='hidden' name='order_id' value='" . $row['order_id'] . "'>
+                        <select name='order_status' required>
+                            <option value='Pending' " . ($row['order_status'] == 'Pending' ? 'selected' : '') . ">Pending</option>
+                            <option value='Processing' " . ($row['order_status'] == 'Processing' ? 'selected' : '') . ">Processing</option>
+                            <option value='Shipped' " . ($row['order_status'] == 'Shipped' ? 'selected' : '') . ">Shipped</option>
+                            <option value='Delivered' " . ($row['order_status'] == 'Delivered' ? 'selected' : '') . ">Delivered</option>
+                            <option value='Cancelled' " . ($row['order_status'] == 'Cancelled' ? 'selected' : '') . ">Cancelled</option>
+                        </select>
+                        <button type='submit'>Update</button>
+                    </form>
+                </td>
+            </tr>";
+    }
 
-    <a href="add_product.php">Back to Add Product</a> <!-- Link to go back to another page -->
-</body>
-</html>
+    echo "</table>";
+} else {
+    echo "<p>No orders found.</p>";
+}
 
-<?php
-$conn->close(); // Close the database connection
+$conn->close();
 ?>

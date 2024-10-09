@@ -3,7 +3,6 @@ session_start();
 include 'db_connection.php';
 
 // Fetch all products
-
 $search_query = "";
 if (isset($_GET['search'])) {
     $search_query = $_GET['search'];
@@ -50,7 +49,7 @@ $result = $stmt->get_result();
                     <img src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($product['product_name']) ?>" class="product-image">
                     <p><?= htmlspecialchars($product['product_name']) ?></p>
                     <p>$<?= number_format($product['price'], 2) ?></p>
-                    <a href="product_detail.php?id=<?= $product['product_id'] ?>" class="btn add-to-cart-btn">View Product</a>
+                    <a href="product_detail.php?id=<?= $product['product_id'] ?>" class="btn add-to-cart-btn">Add to Cart</a>
                 </div>
             <?php endwhile; ?>
         </div>

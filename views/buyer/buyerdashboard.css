@@ -1,0 +1,183 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fafafa;
+    color: #333;
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #fff;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #333;
+    transition: transform 0.3s ease;
+}
+
+.logo h1:hover {
+    transform: scale(1.1); /* Slight scale effect on hover */
+}
+
+.logo span {
+    font-weight: 400;
+    color: #a12631;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    position: relative;
+}
+
+.nav ul li a:hover {
+    color: #e63946; /* A more eye-catching red */
+}
+
+.nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #e63946;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease;
+}
+
+.nav ul li a:hover::after {
+    width: 100%;
+}
+
+.icons a {
+    color: #555;
+    margin-left: 20px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.icons a:hover {
+    color: #e63946;
+}
+
+/* Hero Section Styling */
+.hero {
+    background-image: linear-gradient(to bottom right, #ffafbd, #ffc3a0); /* Gradient Background */
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+}
+
+.hero-content {
+    color: white;
+    text-align: center;
+    z-index: 1;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.hero-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    animation: slideIn 1.2s ease-out;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 300;
+    color: #f2f2f2;
+}
+
+.hero .btn {
+    background: linear-gradient(135deg, #e63946, #f7a072);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    background: linear-gradient(135deg, #f7a072, #e63946);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px); /* Lift on hover */
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .hero-heading {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+}

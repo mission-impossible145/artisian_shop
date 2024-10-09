@@ -1,0 +1,68 @@
+/* Reset some default styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+/* Hero Section */
+.categories-hero {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.categories-hero h2 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.categories-hero p {
+    margin: 10px 0 20px;
+    font-size: 1.2rem;
+}
+
+/* Categories Section */
+.categories-listing {
+    padding: 40px 20px;
+}
+
+.categories-listing h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.categories-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Center items horizontally */
+}
+
+.category-item {
+    width: 200px; /* Set a fixed width for category items */
+    height: 150px; /* Set a fixed height for category items */
+    background-color: #ffffff; /* White background for category item */
+    border: 1px solid #ddd; /* Border around the category item */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensure that overflowing content is hidden */
+    text-align: center; /* Center align text in the category item */
+    transition: transform 0.3s; /* Transition for hover effect */
+}
+
+.category-item:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+.category-item a {
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Dark text color */
+}
+
+.category-item h4 {
+    margin: 10px 0; /* Space between text elements */
+    font-size: 1.5rem;
+}

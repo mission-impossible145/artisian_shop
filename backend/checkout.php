@@ -136,17 +136,7 @@ $total_price = 0;
             font-size: 0.9em;
         }
 
-        .payment-details h2 {
-            margin-bottom: 15px;
-        }
-
-        input[type="text"], input[type="number"], input[type="email"], select {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+       
     </style>
 </head>
 <body>
@@ -195,58 +185,8 @@ $total_price = 0;
                 </table>
             </div>
 
-            <div class="payment-details">
-                <form action="place_order.php" method="POST">
-                    <input type="hidden" name="total_price" value="<?php echo $total_price; ?>">
 
-                    <h2>Payment Details</h2>
-
-                    <label for="payment_method">Payment Method:</label>
-                    <select name="payment_method" id="payment_method" required>
-                        <option value="">Select a payment method</option>
-                        <option value="credit_card">Credit Card</option>
-                        <option value="paypal">PayPal</option>
-                        <option value="upi">UPI</option> <!-- Added UPI option -->
-                        <option value="cash_on_delivery">Cash on Delivery</option> <!-- Added Cash on Delivery option -->
-                    </select>
-
-                    <div id="credit_card_details" style="display:none;">
-                        <h3>Credit Card Information</h3>
-                        <label for="card_number">Card Number:</label>
-                        <input type="text" name="card_number" id="card_number" placeholder="Enter your card number" required>
-
-                        <label for="card_expiry">Expiry Date:</label>
-                        <input type="text" name="card_expiry" id="card_expiry" placeholder="MM/YY" required>
-
-                        <label for="card_cvc">CVC:</label>
-                        <input type="number" name="card_cvc" id="card_cvc" placeholder="CVC" required>
-
-                     
-                    
-                    </div>
-
-                    <div id="paypal_details" style="display:none;">
-                        <h3>PayPal Information</h3>
-                        <label for="paypal_email">PayPal Email:</label>
-                        <input type="email" name="paypal_email" id="paypal_email" placeholder="Enter your PayPal email" required>
-                    </div>
-
-                    
-
-                    <div id="upi_details" style="display:none;">
-                        <h3>UPI Information</h3>
-                        <label for="upi_id">UPI ID:</label>
-                        <input type="text" name="upi_id" id="upi_id" placeholder="Enter your UPI ID" required>
-                    </div>
-
-                    
-
-                    <div id="cod_details" style="display:none;">
-                        <h3>Cash on Delivery</h3>
-                        <p>Please make sure you have the correct cash amount ready for delivery.</p>
-                    </div>
-
-                    <a href="payment_gateway.php" class="order-btn">place order</a>
+                    <a href="order_confirmation.php" class="order-btn">place order</a>
                    
                 </form>
             </div>
@@ -257,32 +197,7 @@ $total_price = 0;
         &copy; <?php echo date("Y"); ?> Artisan Shop. All rights reserved.
     </footer>
 
-    <script>
-        const paymentMethod = document.getElementById('payment_method');
-        const creditCardDetails = document.getElementById('credit_card_details');
-        const paypalDetails = document.getElementById('paypal_details');
-        const upiDetails = document.getElementById('upi_details');
-        const codDetails = document.getElementById('cod_details');
-
-        paymentMethod.addEventListener('change', function () {
-            // Hide all payment details initially
-            creditCardDetails.style.display = 'none';
-            paypalDetails.style.display = 'none';
-            upiDetails.style.display = 'none';
-            codDetails.style.display = 'none';
-
-            // Show relevant payment details based on the selected payment method
-            if (this.value === 'credit_card') {
-                creditCardDetails.style.display = 'block';
-            } else if (this.value === 'paypal') {
-                paypalDetails.style.display = 'block';
-            } else if (this.value === 'upi') {
-                upiDetails.style.display = 'block';
-            } else if (this.value === 'cash_on_delivery') {
-                codDetails.style.display = 'block';
-            }
-        });
-    </script>
+   
 </body>
 </html>
 

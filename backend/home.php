@@ -46,7 +46,7 @@ $result = $stmt->get_result();
         </nav>
         <div class="cart-search">
             <input type="text" placeholder="Search">
-            <a href="#" class="cart">Cart</a>
+            <a href="view_cart.php" class="cart">Cart</a>
         </div>
     </header>
 

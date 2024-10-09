@@ -7,5 +7,5 @@ if (empty($_SESSION['cart'])) {
 
 echo "<h1>Simulated Payment Gateway</h1>";
 echo "<p>Payment processed successfully!</p>";
-echo "<a href='checkout.php?payment=success'>Complete your order</a>";
+echo "<a href='products.php?payment=success'>order completed continue shopping</a>";
 ?>

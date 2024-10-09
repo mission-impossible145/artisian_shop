@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-//Check if the user is logged in and is a seller
+// Check if the user is logged in and is a seller
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'seller') {
    header("Location: login.php");
-    exit();
+   exit();
 }
 ?>
 
@@ -24,15 +24,13 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'seller') {
             <ul>
                 <li><a href="list_products.php">🛒 List Your Products</a></li>
                 <li><a href="manage_orders.php">📦 Manage Orders</a></li>
+                <li><a href="monthly_sales.php">💰 Monthly Sales</a></li>
                 <li><a href="logout.php">🚪 Logout</a></li>
             </ul>
         </div>
 
         <div class="content">
             <h1>Welcome to Your Seller Dashboard</h1>
-            <p>Hello, <strong><?php" $_SESSION['seller_name']==$seller_name . "?></strong>! Manage your products and orders efficiently.</p>
-
-            
             <div class="dashboard-actions">
                 <div class="dashboard-card product-card">
                     <h3>List Your Products</h3>
@@ -45,9 +43,14 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'seller') {
                     <p>View, process, and track all your orders easily.</p>
                     <a href="manage_orders.php" class="btn">Go to Orders</a>
                 </div>
-            </div>
 
-          
+                <div class="dashboard-card sales-card">
+                    <h3>Monthly Sales</h3>
+                    <p>View your total sales for the current month.</p>
+                    <a href="monthly_sales.php" class="btn">Go to Sales</a>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

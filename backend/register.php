@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +73,7 @@
 <body>
     <div class="container">
         <h1>User Registration</h1>
-        <form action="" method="POST">
+        <form action="register_process.php" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -88,7 +87,6 @@
             <select id="role" name="role" required>
                 <option value="buyer">Buyer</option>
                 <option value="seller">Seller</option>
-              
             </select>
 
             <input type="submit" value="Register">
