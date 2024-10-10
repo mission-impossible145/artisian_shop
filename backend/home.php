@@ -95,7 +95,7 @@ $result = $stmt->get_result();
             <input type="text" placeholder="Mobile Number">
             <input type="email" placeholder="Email">
             <textarea placeholder="Message"></textarea>
-            <button type="submit" class="btn">Send Message</button>
+            <button type="submit" class="btn">Send Message1</button>
         </div>
     </section>
 
