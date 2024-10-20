@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -5,10 +6,21 @@
     font-family: Arial, sans-serif;
 }
 
-body {
+/* Ensure the body takes full height and uses flexbox layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
     background-color: #f4f4f4;
 }
 
+/* Content container that grows to fill the space above the footer */
+.content {
+    flex: 1;
+}
+
+/* Header styles */
 .top-header {
     background-color: #f8f8f8;
     padding: 10px;
@@ -63,27 +75,28 @@ body {
     border-radius: 4px;
 }
 
+/* Hero section styles */
 .hero {
-    position: relative; /* Ensure the hero section positions correctly */
-    overflow: hidden; /* Hide any overflow */
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-content {
-    position: absolute; /* Position the content over the image */
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center the content */
+    transform: translate(-50%, -50%);
     text-align: center;
-    color: white; /* Change text color if needed */
+    color: white;
 }
 
 .hero-image {
-    width: 100%; /* Make image responsive */
-    height: auto; /* Maintain aspect ratio */
-    opacity: 0.8; /* Optional: add some opacity */
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
 }
 
-
+/* Handicrafts section */
 .types-of-handicrafts {
     padding: 50px;
     text-align: center;
@@ -106,6 +119,7 @@ body {
     border-radius: 50%;
 }
 
+/* Products section */
 .products {
     padding: 50px;
     background-color: #f8f8f8;
@@ -123,9 +137,11 @@ body {
 }
 
 .product-item img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 15px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
 }
 
 .product-item h3 {
@@ -147,93 +163,21 @@ body {
     border-radius: 5px;
 }
 
+/* About Us section */
 .about-us {
     padding: 50px;
     text-align: center;
     background-color: #fff;
 }
 
-.about-us img {
-    max-width: 300px;
-    height: auto;
-    margin-top: 20px;
-}
-
-.gallery {
-    padding: 50px;
-    background-color: #f8f8f8;
-    text-align: center;
-}
-
-.gallery-grid {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.gallery img {
-    max-width: 150px;
-    height: auto;
-    border-radius: 10px;
-}
-
-.videos {
-    padding: 50px;
-    background-color: #fff;
-    text-align: center;
-}
-
-.video-grid {
-    display: flex;
-    justify-content: space-around;
-}
-
-.testimonials {
-    padding: 50px;
-    background-color: #f8f8f8;
-    text-align: center;
-}
-
-.testimonials-grid {
-    display: flex;
-    justify-content: space-around;
-}
-
-.testimonial-item {
-    width: 250px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
+/* Contact Us section */
 .contact-us {
     padding: 50px;
     background-color: #fff;
     text-align: center;
 }
 
-.contact-form {
-    margin-top: 20px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    max-width: 300px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.contact-form .btn {
-    padding: 10px 20px;
-    background-color: #264653;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-}
-
+/* Footer section */
 .footer {
     padding: 20px;
     background-color: #264653;
