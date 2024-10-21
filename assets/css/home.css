@@ -75,6 +75,17 @@ html, body {
     border-radius: 4px;
 }
 
+
+.header
+{
+    margin-bottom: 50px;
+}
+.sss
+{
+    padding: 50px;
+    margin-bottom: 300px;
+}
+
 /* Hero section styles */
 .hero {
     position: relative;
