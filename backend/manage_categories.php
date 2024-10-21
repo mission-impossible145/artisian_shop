@@ -62,21 +62,23 @@ $result = $conn->query($sql);
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* White text */
             padding: 20px;
         }
 
         h1 {
             text-align: center;
+            color: #00BFAE; /* Vibrant teal */
         }
 
         .category-form {
             max-width: 400px;
             margin: 0 auto 40px;
             padding: 20px;
-            background-color: white;
+            background-color: #1F1F1F; /* Darker gray */
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .category-form input[type="text"],
@@ -85,7 +87,7 @@ $result = $conn->query($sql);
             padding: 10px;
             margin: 10px 0;
             border-radius: 5px;
-            border: 1px solid #ddd;
+            border: 1px solid #444; /* Dark border */
         }
 
         .category-list {
@@ -96,28 +98,40 @@ $result = $conn->query($sql);
         .category-list table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1F1F1F; /* Darker gray for table */
         }
 
         .category-list table th, .category-list table td {
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid #2A2A2A; /* Lighter gray for borders */
             text-align: left;
+        }
+
+        .category-list table th {
+            background-color: #00BFAE; /* Vibrant teal for header */
+            color: #ffffff; /* White text for header */
         }
 
         .edit-btn, .delete-btn {
             padding: 5px 10px;
             margin-right: 10px;
-            border-radius: 5px;
+            border-radius: transparent;
             text-decoration: none;
             color: white;
         }
 
         .edit-btn {
-            background-color: #28a745;
+            background-color: #007bff /* Green for edit button */
         }
 
         .delete-btn {
-            background-color: #dc3545;
+            background-color: #dc3545; /* Red for delete button */
+            
+        }
+
+        .edit-btn:hover, .delete-btn:hover {
+            opacity: 0.9; /* Slightly fade on hover */
         }
     </style>
 </head>
@@ -150,7 +164,7 @@ $result = $conn->query($sql);
                     <form method="POST" style="display:inline-block;">
                         <input type="hidden" name="category_id" value="<?= $category['category_id'] ?>">
                         <input type="text" name="category_name" value="<?= htmlspecialchars($category['category_name']) ?>" required>
-                        <button type="submit" name="edit_category">Edit</button>
+                        <button type="submit" name="edit_category" class="edit-btn">Edit</button>
                     </form>
 
                     <!-- Delete category -->

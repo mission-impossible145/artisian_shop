@@ -31,6 +31,17 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'sell
         <label for="description">Description:</label>
         <textarea id="description" name="description" required></textarea>
 
+
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+            <option value="">Select a category</option>
+            <?php foreach ($categories as $category): ?>
+                <option value="<?php echo htmlspecialchars($category['id']); ?>">
+                    <?php echo htmlspecialchars($category['category_name']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+
         <label for="image_url">Image:</label>
         <input type="file" id="image_url" name="image_url" required>
 

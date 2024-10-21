@@ -18,9 +18,77 @@ if (!$result) {
 }
 
 // Check if there are any users
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* White text */
+            padding: 20px;
+        }
+
+        h1 {
+            color: #00BFAE; /* Vibrant teal */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1F1F1F; /* Darker gray for the table */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #2A2A2A; /* Lighter gray for the border */
+        }
+
+        th {
+            background-color: #00BFAE; /* Vibrant teal for header */
+            color: #ffffff; /* White text for header */
+        }
+
+        tr:hover {
+            background-color: #2A2A2A; /* Slightly lighter gray on hover */
+        }
+
+        button {
+            background-color: #dc3545; /* Red for delete button */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+
+        .edit-button {
+            background-color: #007bff; /* Blue for edit button */
+        }
+
+        .edit-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+<?php
 if ($result->num_rows > 0) {
     echo "<h1>Manage Users</h1>";
-    echo "<table border='1'>
+    echo "<table>
             <tr>
                 <th>User ID</th>
                 <th>Name</th>
@@ -44,7 +112,7 @@ if ($result->num_rows > 0) {
                     </form>
                     <form action='edit_user.php' method='GET' style='display:inline;'>
                         <input type='hidden' name='user_id' value='" . htmlspecialchars($row['user_id']) . "'>
-                        <button type='submit'>Edit</button>
+                        <button type='submit' class='edit-button'>Edit</button>
                     </form>
                 </td>
             </tr>";
@@ -57,3 +125,5 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
+</body>
+</html>

@@ -23,9 +23,77 @@ if (!$result) {
 }
 
 // Check if there are any products awaiting approval
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Product Approvals</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* White text */
+            padding: 20px;
+        }
+
+        h1 {
+            color: #00BFAE; /* Vibrant teal */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1F1F1F; /* Darker gray for the table */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #2A2A2A; /* Lighter gray for the border */
+        }
+
+        th {
+            background-color: #00BFAE; /* Vibrant teal for header */
+            color: #ffffff; /* White text for header */
+        }
+
+        tr:hover {
+            background-color: #2A2A2A; /* Slightly lighter gray on hover */
+        }
+
+        button {
+            background-color: #dc3545; /* Red for reject button */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+
+        .approve-button {
+            background-color: #007bff; /* Blue for approve button */
+        }
+
+        .approve-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+<?php
 if ($result->num_rows > 0) {
     echo "<h1>Manage Product Approvals</h1>";
-    echo "<table border='1'>
+    echo "<table>
             <tr>
                 <th>Product ID</th>
                 <th>Seller Name</th>
@@ -45,7 +113,7 @@ if ($result->num_rows > 0) {
                 <td>
                     <form action='approve_product.php' method='POST' style='display:inline;'>
                         <input type='hidden' name='product_id' value='" . htmlspecialchars($row['product_id']) . "'>
-                        <button type='submit'>Approve</button>
+                        <button type='submit' class='approve-button'>Approve</button>
                     </form>
                     <form action='reject_product.php' method='POST' style='display:inline;'>
                         <input type='hidden' name='product_id' value='" . htmlspecialchars($row['product_id']) . "'>
@@ -62,3 +130,5 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
+</body>
+</html>

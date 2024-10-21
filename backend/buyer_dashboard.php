@@ -26,7 +26,7 @@ $result = $stmt->get_result(); // Execute the query and get the result set
     <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 <body>
-
+<div class= container>
     <!-- Top Header -->
     <header class="top-header">
         <div class="user-actions">
@@ -47,14 +47,14 @@ $result = $stmt->get_result(); // Execute the query and get the result set
                 <li><a href="category.php">Categories</a></li>
                 <li><a href="products.php">Products</a></li>
                 <li><a href="#">About Us</a></li>
-                <li><a href="#">Gallery</a></li>
+               
                 <li><a href="login.php">Sell</a></li>
                 <li><a href="#">Contact Us</a></li>
             </ul>
         </nav>
         <div class="cart-search">
             <input type="text" placeholder="Search">
-            <a href="#" class="cart">Cart</a>
+            <a href="view_cart.php" class="cart">Cart</a>
         </div>
     </header>
 
@@ -88,22 +88,7 @@ $result = $stmt->get_result(); // Execute the query and get the result set
         <img src="aboutus.jpg" alt="Handicraft Image">
     </section>
 
-    <!-- Contact Us Section -->
-    <section class="contact-us">
-        <h2>Contact Us</h2>
-        <div class="contact-info">
-            <p>Address: 123 Artisan St, City, Country</p>
-            <p>Phone: +123456789</p>
-            <p>Email: info@artisanshop.com</p>
-        </div>
-        <div class="contact-form">
-            <input type="text" placeholder="Full Name">
-            <input type="text" placeholder="Mobile Number">
-            <input type="email" placeholder="Email">
-            <textarea placeholder="Message"></textarea>
-            <button type="submit" class="btn">Send Message</button>
-        </div>
-    </section>
+            </div>
 
     <!-- Footer -->
     <footer class="footer">

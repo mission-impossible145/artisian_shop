@@ -16,7 +16,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMI6wbbKlA9lG2zAzFPOoN8rx/8B2t4zVfZnY" crossorigin="anonymous"> <!-- Font Awesome -->
     <style>
-        /* Reset some default styles */
         * {
             margin: 0;
             padding: 0;
@@ -25,28 +24,54 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to bottom right, #f0f4c3, #81d4fa); /* Colorful gradient background */
-            color: #333;
-            padding: 20px;
-            height: 100vh; /* Full height */
+            background-color: #121212; /* Dark background */
             display: flex;
-            align-items: center;
-            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
         }
 
-        .container {
-            max-width: 1200px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
+        .sidebar {
+            width: 250px;
+            background-color: #1F1F1F; /* Darker gray */
+            padding: 20px;
+            color: #00BFAE; /* Vibrant teal */
+            height: 100vh;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #00BFAE; /* Vibrant teal */
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #2A2A2A; /* Slightly lighter gray */
+        }
+
+        .content {
+            margin-left: 270px; /* Space for the sidebar */
+            padding: 20px;
+            flex: 1;
+            color: #fff; /* White text for content */
         }
 
         .header {
-            background-color: #007bff;
+            background-color: #1F1F1F; /* Darker gray */
             padding: 20px;
-            color: #fff;
+            color: #00BFAE; /* Vibrant teal */
             text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
         h1 {
@@ -54,53 +79,11 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
             font-size: 2.5rem;
         }
 
-        p {
-            font-size: 1.2rem;
-        }
-
-        .admin-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid layout */
-            gap: 20px;
-            padding: 30px;
-        }
-
-        .admin-card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .admin-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .admin-card i {
-            font-size: 3rem;
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-
-        .admin-card a {
-            display: block;
-            color: #333;
-            text-decoration: none;
-            font-size: 1.2rem;
-            margin-top: 10px;
-        }
-
-        .admin-card a:hover {
-            color: #007bff;
-            text-decoration: underline;
-        }
-
+       
+       
         .logout-btn {
             display: block;
-            background-color: #dc3545;
+            background-color: ; /* Vibrant teal */
             color: white;
             text-decoration: none;
             padding: 15px 25px;
@@ -113,59 +96,34 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
         }
 
         .logout-btn:hover {
-            background-color: #c82333;
+            background-color: #009B8B; /* Darker teal */
         }
 
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #666;
-            padding: 20px 0;
-            background-color: #007bff;
-            color: white;
-        }
+     
     </style>
 </head>
 <body>
 
-    <div class="container">
+
+    <div class="sidebar">
+        <h2>Admin Menu</h2>
+        <a href="manage_users.php">Manage Users</a>
+        <a href="manage_products.php">Manage Products</a>
+        
+        <a href="manage_categories.php">Manage Categories</a>
+        <a href="analytics.php">View Analytics</a>
+        <a href="logout.php" class="logout-btn">Logout</a>
+    </div>
+
+    <div class="content">
         <div class="header">
             <h1>Admin Dashboard</h1>
             <p>Hello, <?php echo htmlspecialchars($_SESSION['name']); ?>!</p>
         </div>
 
-        <div class="admin-options">
-            <div class="admin-card">
-                <i class="fas fa-users"></i>
-                <a href="manage_users.php">Manage Users</a>
-            </div>
-            <div class="admin-card">
-                <i class="fas fa-box-open"></i>
-                <a href="manage_products.php">Manage Products</a>
-            </div>
-            <div class="admin-card">
-                <i class="fas fa-shopping-cart"></i>
-                <a href="manage_orders.php">Manage Orders</a>
-            </div>
-            <div class="admin-card">
-                <i class="fas fa-chart-line"></i>
-                <a href="analytics.php">View Analytics</a>
-            </div>
-        </div>
-
-        <div class="admin-card">
-             <i class="fas fa-tags"></i>
-             <a href="manage_categories.php">Manage Categories</a> <!-- New card for category management -->
-        </div>
-
-
-        <a href="logout.php" class="logout-btn">Logout</a>
     </div>
-
-    <footer>
-        &copy; <?php echo date("Y"); ?> Artisan Shop. All rights reserved.
-    </footer>
+    
+    
 
 </body>
 </html>

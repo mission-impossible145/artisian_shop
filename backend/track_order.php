@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 $buyer_id = $_SESSION['user_id'];
 
 // Fetch the user's orders
-$sql = "SELECT o.order_id, o.total_price, o.order_date, o.order_status, o.payment_method 
+$sql = "SELECT o.order_id, o.total_price, o.order_date, o.order_status 
         FROM orders o
         WHERE o.buyer_id = ? 
         ORDER BY o.order_date DESC";
@@ -80,8 +80,8 @@ $result = $stmt->get_result();
                     <th>Total Price</th>
                     <th>Order Date</th>
                     <th>Order Status</th> <!-- Updated to 'Order Status' -->
-                    <th>Payment Method</th>
-                    <th>View Details</th>
+                    
+                    
                 </tr>";
 
         while ($row = $result->fetch_assoc()) {
@@ -90,8 +90,8 @@ $result = $stmt->get_result();
                     <td>$" . number_format($row['total_price'], 2) . "</td>
                     <td>" . date('Y-m-d', strtotime($row['order_date'])) . "</td>
                     <td>" . htmlspecialchars($row['order_status']) . "</td> <!-- Updated to 'order_status' -->
-                    <td>" . htmlspecialchars($row['payment_method']) . "</td>
-                    <td><a href='track_order_details.php?order_id=" . $row['order_id'] . "'>View Details</a></td> <!-- Updated to 'track_order_details' -->
+                   
+                   
                 </tr>";
         }
 

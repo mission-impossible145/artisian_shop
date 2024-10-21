@@ -70,15 +70,6 @@ $total_price = 0;
             margin-right: 20px; /* Spacing between frames */
         }
 
-        .payment-details {
-            flex: 1; /* Take up remaining space */
-            background-color: #ffffff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            padding: 20px; /* Padding for payment section */
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -102,15 +93,15 @@ $total_price = 0;
         }
 
         .order-btn {
-            background-color: #28a745; /* Green for order button */
-            color: white;
-            padding: 15px 30px;
-            border-radius: 5px;
+            background-color: #04AA6D; /* Green */
             border: none;
-            margin-top: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-size: 1.2em; /* Larger button font */
+            color: white;
+            padding: 10px 20px; /* Reduced padding */
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px; /* Reduced font size */
+            margin-top: 20px; /* Space above the button */
+            display: inline-block; /* Make it inline-block */
         }
 
         .order-btn:hover {
@@ -135,8 +126,6 @@ $total_price = 0;
             color: #333;
             font-size: 0.9em;
         }
-
-       
     </style>
 </head>
 <body>
@@ -183,12 +172,7 @@ $total_price = 0;
                         </tr>
                     <?php endif; ?>
                 </table>
-            </div>
-
-
-                    <a href="order_confirmation.php" class="order-btn">place order</a>
-                   
-                </form>
+                <a href="order_confirmation.php" class="order-btn">Place Order</a>
             </div>
         </div>
         <a href="view_cart.php">Go Back to Cart</a>
@@ -196,8 +180,5 @@ $total_price = 0;
     <footer>
         &copy; <?php echo date("Y"); ?> Artisan Shop. All rights reserved.
     </footer>
-
-   
 </body>
 </html>
-
