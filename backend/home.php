@@ -52,6 +52,11 @@ $result = $stmt->get_result();
         </div>
     </header>
 
+    <section class="header">
+        <div class="sss">
+        <p>sfds</p>
+</div>
+</section>
 
 
     <!-- Products -->
@@ -69,8 +74,32 @@ $result = $stmt->get_result();
         </div>
     </section>
 
-  
-            </div>
+    <!-- About Us Section -->
+    <section class="about-us">
+        <h2>About Us</h2>
+        <p>We are dedicated to creating unique, handcrafted products that bring beauty and creativity to your home. Our skilled artisans ensure every item is crafted with precision and care.</p>
+        <img src="aboutus.jpg" alt="Handicraft Image">
+    </section>
+
+   
+
+    <!-- Contact Us Section -->
+    <section class="contact-us">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p>Address: 123 Artisan St, City, Country</p>
+            <p>Phone: +123456789</p>
+            <p>Email: info@artisanshop.com</p>
+        </div>
+        <div class="contact-form">
+            <input type="text" placeholder="Full Name">
+            <input type="text" placeholder="Mobile Number">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <p>© 2024 Artisan Handicraft Center. All rights reserved.</p>
