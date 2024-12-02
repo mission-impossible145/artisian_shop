@@ -7,12 +7,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $product_name = $_POST['product_name'];
     $price = $_POST['price'];
     $description = $_POST['description'];
-    $seller_id = $_SESSION['user_id'];
+    $category_id = $_POST['category_id'];  // Fetch the category ID from POST data
+    $stock_quantity = $_POST['stock_quantity'];
 
     // Update the product details
-    $sql = "UPDATE products SET product_name = ?, price = ?, description = ? WHERE product_id = ?";
+    $sql = "UPDATE products SET product_name = ?, price = ?, description = ?, category_id = ?, stock_quantity = ? WHERE product_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sdsi", $product_name, $price, $description, $product_id);
+    $stmt->bind_param("sdsiii", $product_name, $price, $description, $category_id, $stock_quantity, $product_id);
 
     // Check if a new image has been uploaded
     if (!empty($_FILES['image_url']['name'])) {
@@ -23,8 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Validate file and move it to the target directory
         if (move_uploaded_file($_FILES["image_url"]["tmp_name"], $target_file)) {
             // Update image URL in the database
-            $sql = "UPDATE products SET image_url = ? WHERE product_id = ?";
-            $stmt_image = $conn->prepare($sql);
+            $sql_image = "UPDATE products SET image_url = ? WHERE product_id = ?";
+            $stmt_image = $conn->prepare($sql_image);
             $stmt_image->bind_param("si", $target_file, $product_id);
             $stmt_image->execute();
             $stmt_image->close();

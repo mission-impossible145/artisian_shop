@@ -18,6 +18,8 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 <body>
+     
+    <div class="content">
 
     <!-- Top Header -->
     <header class="top-header">
@@ -39,9 +41,9 @@ $result = $stmt->get_result();
                 <li><a href="category.php">Categories</a></li>
                 <li><a href="products.php">Products</a></li> <!-- Link to products page -->
                 <li><a href="about us.html">About Us</a></li>
-               
+                <li><a href="#">Gallery</a></li>
                 <li><a href="login.php">Sell</a></li>    
-                <li><a href="contact.html">Contact Us</a></li>
+             
             </ul>
         </nav>
         <div class="cart-search">
@@ -50,13 +52,12 @@ $result = $stmt->get_result();
         </div>
     </header>
 
-      <!-- Hero Section -->
-<section class="hero">
-    <div class="hero-content">
-        <img src="../assets/images/home-image.jpg" alt="Beautiful Handicrafts" class="home-image">
-        <h2>Beautify Your House with Attractive Handicrafts</h2>
-    </div>
+    <section class="header">
+        <div class="sss">
+        <p>sfds</p>
+</div>
 </section>
+
 
     <!-- Products -->
     <section class="products">
@@ -82,7 +83,22 @@ $result = $stmt->get_result();
 
    
 
-  
+    <!-- Contact Us Section -->
+    <section class="contact-us">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p>Address: 123 Artisan St, City, Country</p>
+            <p>Phone: +123456789</p>
+            <p>Email: info@artisanshop.com</p>
+        </div>
+        <div class="contact-form">
+            <input type="text" placeholder="Full Name">
+            <input type="text" placeholder="Mobile Number">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit" class="btn">Send Message1</button>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">

@@ -80,8 +80,8 @@ $result = $stmt->get_result();
                     <th>Total Price</th>
                     <th>Order Date</th>
                     <th>Order Status</th> <!-- Updated to 'Order Status' -->
-                    
-                    
+                    <th>Payment Method</th>
+                    <th>View Details</th>
                 </tr>";
 
         while ($row = $result->fetch_assoc()) {
@@ -90,8 +90,8 @@ $result = $stmt->get_result();
                     <td>$" . number_format($row['total_price'], 2) . "</td>
                     <td>" . date('Y-m-d', strtotime($row['order_date'])) . "</td>
                     <td>" . htmlspecialchars($row['order_status']) . "</td> <!-- Updated to 'order_status' -->
-                   
-                   
+                    <td>" . htmlspecialchars($row['payment_method']) . "</td>
+                    <td><a href='track_order_details.php?order_id=" . $row['order_id'] . "'>View Details</a></td> <!-- Updated to 'track_order_details' -->
                 </tr>";
         }
 

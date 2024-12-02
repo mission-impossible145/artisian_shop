@@ -7,10 +7,39 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+include 'db_connection.php';
+
 // Initialize total price
 $total_price = 0;
 
+// Handle quantity updates
+if (isset($_POST['update_quantity'])) {
+    $product_id = intval($_POST['product_id']);
+    $new_quantity = intval($_POST['quantity']);
+
+    // Fetch product from database to check stock
+    $sql = "SELECT stock_quantity FROM products WHERE product_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $product = $result->fetch_assoc();
+
+    if ($product) {
+        $available_stock = $product['stock_quantity'];
+
+        // Check if requested quantity is more than available stock
+        if ($new_quantity > $available_stock) {
+            $_SESSION['error'] = "Requested quantity for " . $product_id . " exceeds available stock.";
+        } else {
+            // Update the session cart
+            $_SESSION['cart'][$product_id] = $new_quantity;
+        }
+    }
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -108,6 +137,26 @@ $total_price = 0;
             font-size: 1.2em;
         }
 
+        
+        .quantity-btn {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #009688;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .quantity-btn:hover {
+            background-color: #00796b;
+        }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
         .continue-shopping {
             display: inline-block;
             margin-top: 20px;
@@ -123,6 +172,7 @@ $total_price = 0;
             background-color: #00796b; /* Darker muted teal */
         }
 
+
         footer {
             margin-top: 20px;
             text-align: center;
@@ -135,6 +185,13 @@ $total_price = 0;
     <div>
         <h1>Your Shopping Cart</h1>
 
+         <!-- Display any error messages -->
+         <?php if (isset($_SESSION['error'])): ?>
+            <div class="error-message">
+                <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+            </div>
+        <?php endif; ?>
+
         <div class="cart-table">
             <table>
                 <tr>
@@ -146,7 +203,7 @@ $total_price = 0;
                 </tr>
                 <?php if (!empty($_SESSION['cart'])): ?>
                     <?php
-                    include 'db_connection.php';
+                    
                     foreach ($_SESSION['cart'] as $product_id => $quantity) {
                         $sql = "SELECT * FROM products WHERE product_id = ?";
                         $stmt = $conn->prepare($sql);
@@ -161,7 +218,13 @@ $total_price = 0;
                             ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($product['product_name']); ?></td>
-                                <td><?php echo $quantity; ?></td>
+                                <td>
+                                <form action="" method="POST">
+                                        <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                                        <input type="number" name="quantity" value="<?php echo $quantity; ?>" min="1" max="<?php echo $product['stock_quantity']; ?>">
+                                        <button type="submit" name="update_quantity" class="quantity-btn">Update</button>
+                                    </form>
+                                </td>
                                 <td>$<?php echo number_format($product['price'], 2); ?></td>
                                 <td>$<?php echo number_format($subtotal, 2); ?></td>
                                 <td><a href="remove_from_cart.php?id=<?php echo $product_id; ?>">Remove</a></td>

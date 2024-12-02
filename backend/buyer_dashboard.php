@@ -9,11 +9,12 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'buyer') {
 
 include 'db_connection.php'; // Include your database connection
 
-// Fetch all products from the database
-$sql = "SELECT * FROM products"; // Adjust this query as needed
+// Fetch limited products for home page
+$sql = "SELECT * FROM products LIMIT 4"; // Change the limit as needed
 $stmt = $conn->prepare($sql);
 $stmt->execute();
-$result = $stmt->get_result(); // Execute the query and get the result set
+$result = $stmt->get_result();
+
 
 ?>
 
@@ -49,7 +50,7 @@ $result = $stmt->get_result(); // Execute the query and get the result set
                 <li><a href="#">About Us</a></li>
                
                 <li><a href="login.php">Sell</a></li>
-                <li><a href="#">Contact Us</a></li>
+                
             </ul>
         </nav>
         <div class="cart-search">
