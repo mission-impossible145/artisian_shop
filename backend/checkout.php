@@ -152,7 +152,8 @@ $total_price = 0;
 
                             if ($product) {
                                 $subtotal = $product['price'] * $quantity;
-                                $total_price += $subtotal;
+                                $total_price += $subtotal;       
+
                                 ?>
                                 <tr>
                                     <td><?php echo htmlspecialchars($product['product_name']); ?></td>
@@ -173,6 +174,8 @@ $total_price = 0;
                     <?php endif; ?>
                 </table>
                 <a href="order_confirmation.php" class="order-btn">Place Order</a>
+                <a href="order_confirmation.php?product_id=<?php echo $product['product_id']; ?>&quantity=<?php echo $quantity; ?>" class="order-btn">Place Order</a>
+
             </div>
         </div>
         <a href="view_cart.php">Go Back to Cart</a>

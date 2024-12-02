@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'sell
 
 $seller_id = $_SESSION['user_id'];
 
-// Updated query to join products and categories table
+// Query to join products and categories table
 $sql = "SELECT p.*, c.category_name 
         FROM products p 
         INNER JOIN categories c ON p.category_id = c.category_id 
@@ -37,7 +37,7 @@ $result = $stmt->get_result();
             <thead>
                 <tr>
                     <th>Product Name</th>
-                    <th>Category</th> <!-- New Category column -->
+                    <th>Category</th>
                     <th>Price</th>
                     <th>Description</th>
                     <th>Image</th>
@@ -49,10 +49,12 @@ $result = $stmt->get_result();
                 <?php while ($row = $result->fetch_assoc()) { ?>
                 <tr>
                     <td><?php echo htmlspecialchars($row['product_name']); ?></td>
-                    <td><?php echo htmlspecialchars($row['category_name']); ?></td> <!-- Display Category -->
+                    <td><?php echo htmlspecialchars($row['category_name']); ?></td>
                     <td><?php echo htmlspecialchars($row['price']); ?></td>
                     <td><?php echo htmlspecialchars($row['description']); ?></td>
-                    <td><img src="<?php echo htmlspecialchars($row['image_url']); ?>" alt="Product Image" width="50"></td>
+                    <td>
+                        <img src="<?php echo htmlspecialchars($row['image_url']); ?>" alt="Product Image" width="50">
+                    </td>
                     <td><?php echo htmlspecialchars($row['stock_quantity']); ?></td>
                     <td>
                         <a href="edit_product.php?id=<?php echo $row['product_id']; ?>" class="btn edit">Edit</a>
